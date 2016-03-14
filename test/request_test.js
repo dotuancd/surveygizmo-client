@@ -1,6 +1,5 @@
 var should = require('should');
 var rando = require('randomstring');
-var md5 = require('MD5')
 function loadFixture(name){
   return JSON.parse(require('fs')
   .readFileSync(require('path').join(__dirname, '/fixtures/'+ name)));
@@ -23,15 +22,14 @@ describe('SGizmo Request Object', function(){
   beforeEach(function(done){
     var acct = loadFixture('account.json');
     options = {
-      username: acct.username,
-      password: acct.password,
+      apiToken: acct.apiToken,
       version: 'v4'
     };
     done();
   });
   it('should throw if no options are passed to the constructor', function(done){
     (function(){
-      var req = new Req({username: 'chris'});
+      var req = new Req({});
     }).should.throw();
     done();
   });
@@ -42,7 +40,7 @@ describe('SGizmo Request Object', function(){
   });
   it('should have the auth property set when instantiated', function(done){
     var req = new Req(options);
-    req.should.have.property('auth', 'user:md5=' + options.username +':'+ md5(options.password));
+    req.should.have.property('auth', 'api_token=' + options.apiToken);
     done();
   });
   it('should have _setEndpoint() method', function(done){

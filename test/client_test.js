@@ -11,8 +11,7 @@ describe('SGizmo Client', function(){
     Client = require('../lib/client');
     acct = loadFixture('account.json');
     auth = {
-      username: acct.username,
-      password: acct.password
+        "apiToken": acct.apiToken
     };
     client = new Client(auth);
     done();
