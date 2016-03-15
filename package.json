@@ -15,9 +15,9 @@
     "sinon": "^1.14.1"
   },
   "dependencies": {
-    "bluebird": "^2.9.27",
+    "bluebird": "2.9.27",
     "lodash": "^3.9.3",
-    "superagent-bluebird-promise": "^2.0.2",
+    "superagent-bluebird-promise": "2.0.2",
     "traverse": "^0.6.6"
   },
   "directories": {
